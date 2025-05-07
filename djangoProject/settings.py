@@ -100,7 +100,7 @@ DATABASES = {
         'NAME': 'dbproject2',
         # TODO 数据库名字 django_test
         'USER': 'root',
-        'PASSWORD': 'Leo0304323950',
+        'PASSWORD': 'root',
         'HOST': '127.0.0.1',
     }
 }
