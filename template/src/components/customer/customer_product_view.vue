@@ -3,7 +3,7 @@
     <div class="product">
       <!-- 商品图片、名称、价格 -->
       <div class="product-image">
-        <img :src="`http://127.0.0.1:8000/media/${product.fields.product_image}`" alt="">
+        <img :src="`http://127.0.0.1:8001/media/${product.fields.product_image}`" alt="">
       </div>
       <div class="product-info">
         <h1 class="product-name">{{product.fields.product_name}}</h1>
@@ -54,7 +54,7 @@
 
     <div class="product-desc">
       <h2>产品介绍</h2>
-      <img :src="`http://127.0.0.1:8000/media/${product.fields.product_imageDetail}`" alt="">
+      <img :src="`http://127.0.0.1:8001/media/${product.fields.product_imageDetail}`" alt="">
     </div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div class="product">
-      <img :src="`http://127.0.0.1:8000/media/${info.fields.product_image}`" alt="" height="200px">
+      <img :src="`http://127.0.0.1:8001/media/${info.fields.product_image}`" alt="" height="200px">
       <h4>{{info.fields.product_name}}</h4>
       <h4>销量{{info.fields.product_sales}}</h4>
       <div class="product-color"

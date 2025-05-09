@@ -16,7 +16,7 @@
             {{ item.fields.customer_name }}
           </v-avatar>
           !-->
-          <img :src="`http://127.0.0.1:8000/media/${userAvatar[item.fields.customer_id]}`" alt=""
+          <img :src="`http://127.0.0.1:8001/media/${userAvatar[item.fields.customer_id]}`" alt=""
                     height="50px" width="50px">
         </v-col>
         <!--用户名-->

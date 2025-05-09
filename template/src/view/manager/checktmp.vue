@@ -64,7 +64,7 @@
 
           <v-row no-gutters>
           <v-col>
-          <img :src="`http://127.0.0.1:8000/media/111`" alt=""
+          <img :src="`http://127.0.0.1:8001/media/111`" alt=""
                     height="50px" width="50px">
         </v-col>
         <!--用户名-->

@@ -12,7 +12,7 @@
             <!-- 列表显示购物清单 -->
             <div class="cart-content-main" v-for="(item)  in cart_list" :key="item.index">
                 <div class="cart-info">
-                    <img :src="`http://127.0.0.1:8000/media/${productDictList[item.fields.product_id].fields.product_image}`" alt=""
+                    <img :src="`http://127.0.0.1:8001/media/${productDictList[item.fields.product_id].fields.product_image}`" alt=""
                     height="150px" width="150px">
                     <span>{{productDictList[item.fields.product_id].fields.product_name}}</span>
                 </div>

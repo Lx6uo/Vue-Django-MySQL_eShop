@@ -47,7 +47,7 @@ def show_order_products(request):
         response['error_num'] = 1
     return JsonResponse(response)
 
-#http://127.0.0.1:8000/show_business_orderProduct/?business_id=8
+#http://127.0.0.1:8080/show_business_orderProduct/?business_id=8
 def show_business_orderProduct(request):
     response = {}
     try:

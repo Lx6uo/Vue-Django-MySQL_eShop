@@ -84,7 +84,7 @@ export default {
       user: '',
       inputText:'',
       statuss:0,
-      image:'http://127.0.0.1:8000/media/'+'avatar/airPods.jpg',
+      image:'http://127.0.0.1:8001/media/'+'avatar/airPods.jpg',
         form: {
           goods_image: '',
         }

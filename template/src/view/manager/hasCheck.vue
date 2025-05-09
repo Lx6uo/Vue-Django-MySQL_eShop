@@ -9,9 +9,9 @@
   <v-row>
     <v-col class="product">
       <!--第一部分上面是商品图像+商品细节照片 下面是商品信息-->
-      <img class="picture1" :src="`http://127.0.0.1:8000/media/${item.fields.product_image}`" alt=""
+      <img class="picture1" :src="`http://127.0.0.1:8001/media/${item.fields.product_image}`" alt=""
            height="50px" width="50px">
-      <img class="picture2" :src="`http://127.0.0.1:8000/media/${item.fields.product_imageDetail}`" alt=""
+      <img class="picture2" :src="`http://127.0.0.1:8001/media/${item.fields.product_imageDetail}`" alt=""
            height="50px" width="50px">
       <v-row>
         <v-col>
@@ -29,7 +29,7 @@
       </v-row>
     </v-col>
     <v-col class="saler">
-      <img :src="`http://127.0.0.1:8000/media/${business_list_dict[item.fields.product_business].fields.user_avatar}`" alt=""
+      <img :src="`http://127.0.0.1:8001/media/${business_list_dict[item.fields.product_business].fields.user_avatar}`" alt=""
            height="50px" width="50px">
       <v-row>
         <v-col>

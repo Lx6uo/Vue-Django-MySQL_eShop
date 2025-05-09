@@ -165,8 +165,8 @@ export default {
         product_image2: null
 
       };
-            this.showPic2='http://127.0.0.1:8000/media/'+response.data.product.fields.product_imageDetail;
-          this.showPic1='http://127.0.0.1:8000/media/'+response.data.product.fields.product_image;
+            this.showPic2='http://127.0.0.1:8001/media/'+response.data.product.fields.product_imageDetail;
+          this.showPic1='http://127.0.0.1:8001/media/'+response.data.product.fields.product_image;
 
         })
         .catch(function (error) {

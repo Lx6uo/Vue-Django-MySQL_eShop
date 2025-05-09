@@ -336,7 +336,7 @@ export default {
               user_name: response.data.user_name,
               user_mobile: response.data.user_mobile,
               user_address: response.data.user_address,
-              user_avatar: (ttt!=="")?'http://127.0.0.1:8000/media/'+ttt:'',
+              user_avatar: (ttt!=="")?'http://127.0.0.1:8001/media/'+ttt:'',
               user_createtime: response.data.user_createtime,
               user_selectAddress:{
           province: response.data.user_province,
@@ -345,7 +345,7 @@ export default {
           town: ''
       },
             }
-            this.showImage = (ttt!=="")?'http://127.0.0.1:8000/media/'+ttt:''
+            this.showImage = (ttt!=="")?'http://127.0.0.1:8001/media/'+ttt:''
         })
         .catch(function (error) {
             console.log(error);
@@ -534,8 +534,8 @@ export default {
         await this.axios.post('edit_userInfo/',formData, configs).then(response => {
           console.log(formData.get('forms'))
         if(response.data.msg==="success"){
-          this.userInfo.user_avatar = 'http://127.0.0.1:8000/media/'+response.data.image
-          this.showImage = 'http://127.0.0.1:8000/media/'+response.data.image
+          this.userInfo.user_avatar = 'http://127.0.0.1:8001/media/'+response.data.image
+          this.showImage = 'http://127.0.0.1:8001/media/'+response.data.image
           console.log(response)
 
           }

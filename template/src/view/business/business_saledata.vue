@@ -146,7 +146,7 @@
       <!--<business_Product v-for="item in filteredAndOrderedList" :info="item" :key="item.fields.id"></business_Product>
 -->
       <div class="product" v-for="item in filteredAndOrderedList" :key="item.fields.id">
-      <img :src="`http://127.0.0.1:8000/media/${item.fields.product_image}`" alt="" height="200px">
+      <img :src="`http://127.0.0.1:8001/media/${item.fields.product_image}`" alt="" height="200px">
       <h4>{{item.fields.product_name}}</h4>
         <v-btn
 
