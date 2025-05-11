@@ -89,7 +89,7 @@ export default {
      * 从每个订单类中查找用户名、商品名和对应的商品数量
      */
 
-    btn_content: '催付款',
+    btn_content: 'Payment Reminder',
 
 
     business_orders:[],

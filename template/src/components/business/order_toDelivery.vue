@@ -83,7 +83,7 @@ export default {
   },
 
   data: () => ({
-    btn_content: '已发货',
+    btn_content: 'Shipped',
 
 
     business_orders:[],

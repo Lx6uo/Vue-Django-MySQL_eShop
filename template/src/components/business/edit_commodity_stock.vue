@@ -9,7 +9,7 @@
         >
           <v-spacer></v-spacer>
           <v-toolbar-title>
-            <h4>增加库存</h4>
+            <h4>Increase Stock</h4>
           </v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
@@ -23,7 +23,7 @@
                     <v-row>
                       <v-col md="12">
                         <v-text-field
-                            label="补充库存量"
+                            label="Additional Stock Quantity"
                             :rules="intRule"
                             v-model="stock"
                             clearable
@@ -33,7 +33,7 @@
                     <v-row>
                       <v-col md="12">
                         <v-text-field
-                            label="单件进价"
+                            label="Unit Cost Price"
                             :rules="costRule"
                             v-model="cost"
                             clearable
@@ -56,7 +56,7 @@
                     color="primary"
                     @click="saveStock"
                 >
-                  添加
+                  Add
                 </v-btn>
               </v-col>
             </v-row>
@@ -78,14 +78,14 @@ export default {
       id: parseInt(this.$route.params.id),
       cost:"",
       stock:"",
-      intRule: [required("增加库存"),
+      intRule: [required("Increase Stock"),
           function (v) {
-            return  /^[1-9]{1}\d*$/.test(v) || `库存为整数`;
+            return  /^[1-9]{1}\d*$/.test(v) || `Stock must be an integer`;
           }
       ],
-      costRule:[required("单件进价"),
+      costRule:[required("Unit Cost Price"),
           function (v) {
-            return  /^(([1-9]{1}\d*)|(0{1}))(\.\d{1,2})?$/.test(v) || `金额最多两位小数`;
+            return  /^(([1-9]{1}\d*)|(0{1}))(\.\d{1,2})?$/.test(v) || `Amount can have at most 2 decimal places`;
           }
       ]
 
@@ -105,7 +105,7 @@ export default {
             console.log(error);
 
         });
-      window.alert("库存添加成功")
+      window.alert("Stock added successfully")
 
       window.location.href = '/#/business/commodity';
     },

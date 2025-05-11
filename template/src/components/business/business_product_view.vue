@@ -1,23 +1,23 @@
 <template>
   <div v-if="product">
     <div class="product">
-      <!-- 商品图片、名称、价格 -->
+      <!-- Product image, name, price -->
       <div class="product-image">
         <img :src="`/media/${product.fields.product_image}`" alt="">
       </div>
       <div class="product-info">
-        <h1 class="product-name">商品id：{{ product.pk }}</h1>
+        <h1 class="product-name">Product ID: {{ product.pk }}</h1>
         <h1 class="product-name">{{ product.fields.product_name }}</h1>
-        <div class="product-cost">商品库存：{{ product.fields.product_stock }}</div>
-        <div class="product-cost">商品销量：{{ product.fields.product_sales }}</div>
-        <div class="product-cost">商品单价：{{ product.fields.product_cost }}</div>
-        <div class="product-cost">商品品牌：{{ product.fields.product_brand }}</div>
-        <div class="product-cost">商品颜色：{{ product.fields.product_color }}</div>
-        <div class="product-cost">商品状态：{{ product.fields.product_status }}</div>
+        <div class="product-cost">Product Stock: {{ product.fields.product_stock }}</div>
+        <div class="product-cost">Product Sales: {{ product.fields.product_sales }}</div>
+        <div class="product-cost">Product Price: {{ product.fields.product_cost }}</div>
+        <div class="product-cost">Product Brand: {{ product.fields.product_brand }}</div>
+        <div class="product-cost">Product Color: {{ product.fields.product_color }}</div>
+        <div class="product-cost">Product Status: {{ product.fields.product_status }}</div>
 
-        <div class="product-add-cart" v-if="isOn" @click="handleAddCart">编辑商品</div>
-        <div class="product-add-cart" v-if="isOn" @click="removePro">下架商品</div>
-        <div class="product-add-cart" v-if="!isOn" @click="handleAddCart">编辑并上架商品</div>
+        <div class="product-add-cart" v-if="isOn" @click="handleAddCart">Edit Product</div>
+        <div class="product-add-cart" v-if="isOn" @click="removePro">Remove Product</div>
+        <div class="product-add-cart" v-if="!isOn" @click="handleAddCart">Edit and List Product</div>
       </div>
 
 
@@ -27,7 +27,7 @@
 
 
     <div class="product-desc">
-      <h2>产品介绍</h2>
+      <h2>Product Description</h2>
       <img :src="`/media/${product.fields.product_imageDetail}`" alt="">
     </div>
   </div>

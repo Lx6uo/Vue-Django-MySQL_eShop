@@ -31,7 +31,7 @@
               class="ma-2"
               color="blue"
               @click="printOut"
-          >导出pdf
+          >Export PDF
     </v-btn>
     <!-- todo -->
               <template>
@@ -40,16 +40,16 @@
               :data="DetailsForm"
               :fields="json_fields"
               :header="Title"
-              name="导出销量.xls"
+              name="export_sales.xls"
             >
               <!-- 上面可以自定义自己的样式，还可以引用其他组件button -->
-              <el-button type="success">导出excel</el-button>
+              <el-button type="success">Export Excel</el-button>
               </download-excel>
               </template>
     <!--删除删除 TODO
 
     <div class="container">
-      {{ upload_file || "导入" }}
+      {{ upload_file || "Import" }}
       <input
         type="file"
         accept=".xls,.xlsx"
@@ -92,7 +92,7 @@
           </v-btn>
         </v-row>
         <v-row class="ml-3">
-          周业务量
+          Weekly Business Volume
         </v-row>
         <line-chart id="xxx"
             width="98%"
@@ -108,14 +108,14 @@
 
     <div class="list-control">
       <div class="list-control-filter">
-        <span>品牌:</span>
+        <span>Brand:</span>
         <span class="list-control-filter-item"
               :class="{on: item === filterBrand}"
               v-for="item in brands" :key="item.index"
               @click="handleFilterBrand(item)" >{{item}}</span>
       </div>
       <div class="list-control-filter">
-        <span>颜色:</span>
+        <span>Color:</span>
         <span class="list-control-filter-item"
               :class="{on: item === filterColor}"
               v-for="item in colors" :key="item.index"
@@ -123,20 +123,20 @@
       </div>
 
       <div class="list-control-order">
-        <span>排序:</span>
+        <span>Sort by:</span>
         <span class="list-control-order-item"
               :class="{on: order === ''}"
-              @click="handleOrderDefault">默认</span>
+              @click="handleOrderDefault">Default</span>
         <span class="list-control-order-item"
               :class="{on: order === 'sales'}"
               @click="handleOrderSales">
-                    销量
+                    Sales
                     <template v-if="order === 'sales'">↓</template>
                 </span>
         <span class="list-control-order-item"
               :class="{on: order.indexOf('cost') > -1}"
               @click="handleOrderCost">
-                    价格
+                    Price
                     <template v-if="order === 'cost-desc'">↓</template>
                     <template v-if="order === 'cost-asc'">↑</template>
                 </span>
@@ -152,9 +152,9 @@
 
             @click="ttt(item.pk)"
           >
-            {{筛选显示}}
+            {{'Filter Display'}}
           </v-btn>
-      <h4>销量{{item.fields.product_sales}}</h4>
+      <h4>Sales {{item.fields.product_sales}}</h4>
       <div class="product-color"
            :style="{background: ccolors[item.fields.product_color]}"></div>
       <div class="product-cost">￥ {{item.fields.product_cost}}</div>
@@ -168,7 +168,7 @@
 
 
     <div class="product-not-found"
-         v-show="!filteredAndOrderedList.length">暂无相关商品</div>
+         v-show="!filteredAndOrderedList.length">No related products found</div>
 
 
 

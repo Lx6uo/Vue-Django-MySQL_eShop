@@ -74,7 +74,7 @@ export default {
     RegionText
   },
   data: () => ({
-    btn_content: '提醒收货',
+    btn_content: 'Remind to Receive',
 
 
     business_orders:[],
@@ -96,7 +96,7 @@ export default {
 
     async initBusinessOrders(){
       await this.axios.get('show_business_orderProduct_status/',
-          {params:{business_id: this.$store.state.userId,status:'买家未收货'}})
+          {params:{business_id: this.$store.state.userId,status:'Unconfirmed by Buyer'}})
         .then((response) => {
             console.log(response);
             this.business_orders = response.data.orders;

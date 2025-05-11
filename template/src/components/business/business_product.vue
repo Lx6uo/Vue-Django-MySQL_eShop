@@ -7,13 +7,13 @@
 
       <img :src="`http://127.0.0.1:8001/media/${info.fields.product_image}`" alt="" height="200px">
       <h4>{{info.fields.product_name}}</h4>
-      <h4>销量{{info.fields.product_sales}}</h4>
+      <h4>Sales: {{info.fields.product_sales}}</h4>
       <div class="product-color"
            :style="{background: colors[info.fields.product_color]}"></div>
       <div class="product-cost">￥ {{info.fields.product_cost}}</div>
       <!-- 阻止冒泡，否则点击按钮的同时也会触发a标签进入详情页 -->
       <div class="product-add-cart"
-           @click.prevent="handleAddCart">增加库存</div>
+           @click.prevent="handleAddCart">Increase Stock</div>
     </router-link>
   </div>
 </template>
@@ -26,12 +26,12 @@ export default {
   data () {
     return {
       colors: {
-        '白色': '#ffffff',
-        '黑色': '#100f0f',
-        '灰色': '#a39f9f',
-        '金色': '#dac272',
-        '蓝色': '#233472',
-        '红色': '#f2352e'
+        'White': '#ffffff',
+        'Black': '#100f0f',
+        'Gray': '#a39f9f',
+        'Gold': '#dac272',
+        'Blue': '#233472',
+        'Red': '#f2352e'
       },
     }
   },
