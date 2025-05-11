@@ -42,11 +42,11 @@
     </div>
     <div class="product-not-found"
          v-show="!filteredAndOrderedList.length">No relevant products</div>
-    <!--猜你喜欢-->
+    <!--You May Also Like-->
     <!--转换成 v-for--后端实现 todo
 <br><br>
     <div class="like">
-      <h4 class="kt">猜你喜欢</h4>
+      <h4 class="kt">You May Also Like</h4>
       <ul class="like-list">
         <li class="likeItem">
           <div class="p-img">
@@ -59,7 +59,7 @@
             <em>¥</em>
             <i>3699.00</i>
           </div>
-          <div class="commit">已有6人评价</div>
+          <div class="commit">6 Reviews</div>
         </li>
         <li class="likeItem">
           <div class="p-img">
@@ -70,7 +70,7 @@
             <em>¥</em>
             <i>4388.00</i>
           </div>
-          <div class="commit">已有700人评价</div>
+          <div class="commit">700 Reviews</div>
         </li>
         <li class="likeItem">
           <div class="p-img">
@@ -81,7 +81,7 @@
             <em>¥</em>
             <i>4088.00</i>
           </div>
-          <div class="commit">已有700人评价</div>
+          <div class="commit">700 Reviews</div>
         </li>
         <li class="likeItem">
           <div class="p-img">
@@ -92,7 +92,7 @@
             <em>¥</em>
             <i>4088.00</i>
           </div>
-          <div class="commit">已有700人评价</div>
+          <div class="commit">700 Reviews</div>
         </li>
       </ul>
     </div>
@@ -103,7 +103,7 @@
 </template>
 
 <script>
-//导入商品简介组件
+//Import product introduction component
 import Customer_Product from './customer_product.vue';
 import util from "@/components/customer/util";
 export default {
@@ -112,14 +112,14 @@ export default {
   data(){
     return {
       list:[],
-      //品牌过滤
+      //Brand filter
       filterBrand: '',
-      //颜色过滤
+      //Color filter
       filterColor: '',
-      //排序依据，可选值：
-      //cost-desc价格降序
-      //cost-asc价格升序
-      //sales销量
+      //Sorting criteria, optional values:
+      //cost-desc price descending
+      //cost-asc price ascending
+      //sales sales volume
       order: ''
     }
   },
@@ -138,17 +138,17 @@ export default {
       return util.getFilterArray(colors);
     },
     filteredAndOrderedList(){
-      //拷贝原数组
+      //Copy the original array
       let list = [...this.list];
-      //品牌过滤
+      //Brand filter
       if(this.filterBrand !== ''){
         list = list.filter(item => item.fields.product_brand === this.filterBrand);
       }
-      //颜色过滤
+      //Color filter
       if(this.filterColor !== ''){
         list = list.filter(item => item.fields.product_color === this.filterColor);
       }
-      //排序
+      //Sorting
       if(this.order !== ''){
         if(this.order === 'sales'){
           list = list.sort((a, b) => b.fields.product_sales - a.fields.product_sales);
@@ -163,7 +163,7 @@ export default {
   },
   methods: {
     async getProductsList(){
-      //从Vuex获取商品列表信息
+      //Get product list information from Vuex
       //return this.$store.state.productList;
       await this.axios.get('show_customer_products/')
         .then((response) => {
@@ -175,18 +175,18 @@ export default {
         });
     },
 
-    //品牌筛选
+    //Brand filtering
     handleFilterBrand(brand){
-      //点击品牌过滤，再次点击取消
+      //Click to filter by brand, click again to cancel
       if (this.filterBrand === brand) {
         this.filterBrand = '';
       }else{
         this.filterBrand = brand;
       }
     },
-    //颜色筛选
+    //Color filtering
     handleFilterColor(color){
-      //点击颜色过滤，再次点击取消
+      //Click to filter by color, click again to cancel
       if (this.filterColor === color) {
         this.filterColor = '';
       }else{
@@ -200,7 +200,7 @@ export default {
       this.order = 'sales';
     },
     handleOrderCost(){
-      //当点击升序时将箭头更新↓,降序设置为↑
+      //When clicking ascending, update arrow to ↓, set descending to ↑
       if(this.order === 'cost-desc'){
         this.order = 'cost-asc';
       }else{
@@ -211,7 +211,7 @@ export default {
   },
 
   async created(){
-    //初始化时通过Vuex actions获取商品列表信息
+    //Initialize by getting product list information through Vuex actions
     console.log("22");
     await this.getProductsList()
     console.log(this.list);

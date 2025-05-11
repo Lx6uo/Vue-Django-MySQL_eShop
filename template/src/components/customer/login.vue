@@ -3,37 +3,37 @@
     <div class="login-info">
         <template v-if="login">
             <form class="login-info-form">
-                <p>登陆界面</p><br>
-                <span>用户账号: </span><input type="text" v-model="username" placeholder=""/><br>
-                <span>用户密码: </span><input type="password" v-model="password"/><br><br>
-                <input class="submit" type="button" @click="goHome" value="提交">
-                <input class="submit" type="button" @click="changeLogin(false, true)" value="前往注册">
+                <p>Login Page</p><br>
+                <span>Username: </span><input type="text" v-model="username" placeholder=""/><br>
+                <span>Password: </span><input type="password" v-model="password"/><br><br>
+                <input class="submit" type="button" @click="goHome" value="Submit">
+                <input class="submit" type="button" @click="changeLogin(false, true)" value="Go to Register">
             </form>
 
         </template>
         <template v-if="register">
             <form class="login-info-form">
-                <p>注册界面</p><br>
-                <span>用户账号: </span><input type="text" v-model="username" placeholder=""/><br>
-                <span>用户密码: </span><input type="password" v-model="password"/><br>
-                <span>确认密码: </span><input type="password" v-model="confirmPassword"/><br><br>
+                <p>Registration Page</p><br>
+                <span>Username: </span><input type="text" v-model="username" placeholder=""/><br>
+                <span>Password: </span><input type="password" v-model="password"/><br>
+                <span>Confirm Password: </span><input type="password" v-model="confirmPassword"/><br><br>
               <v-row justify="center">
 
-    <label><input v-model="radioVal" type="radio" value="用户" @change="getRadioVal">用户</label>
-    <label><input v-model="radioVal" type="radio" value="商家" @change="getRadioVal">商家</label>
+    <label><input v-model="radioVal" type="radio" value="用户" @change="getRadioVal">Customer</label>
+    <label><input v-model="radioVal" type="radio" value="商家" @change="getRadioVal">Business</label>
 
 
 
                 <!--
                 <v-radio-group class="choose" justify="center" v-model="row"  row :mandatory="false" @change="selectID">
-                  <v-radio label="用户" value="radio-1" v-model="register_type1"></v-radio>
-                  <v-radio label="商家" value="radio-2" v-model="register_type2"></v-radio>
-                  <v-radio label="管理员" value="radio-3" v-model="register_type3"></v-radio>
+                  <v-radio label="Customer" value="radio-1" v-model="register_type1"></v-radio>
+                  <v-radio label="Business" value="radio-2" v-model="register_type2"></v-radio>
+                  <v-radio label="Administrator" value="radio-3" v-model="register_type3"></v-radio>
                 </v-radio-group>
                 -->
               </v-row><br><br>
-                <input class="submit" type="button" @click="goLogin" value="提交">
-                <input class="submit" type="button" @click="changeLogin(true, false)" value="已有账号">
+                <input class="submit" type="button" @click="goLogin" value="Submit">
+                <input class="submit" type="button" @click="changeLogin(true, false)" value="Already have an account">
             </form>
         </template>
     </div>
@@ -62,36 +62,36 @@
            async  goLogin(){
 
                 if(!util.trim(this.username) || !util.trim(this.password) ){ //TODO 111
-                    window.alert('账号或密码不能为空');
+                    window.alert('Username or password cannot be empty');
                     return;
                 }
                 if(this.password !== this.confirmPassword){
-                    window.alert('密码不一致，请重新输入');
+                    window.alert('Passwords do not match, please re-enter');
                     this.password = '';
                     this.confirmPassword = '';
                 }else{
-                  //把注册信息写进数据库
+                  //Register information to database
                   await this.addUserInfo(this.username,this.password)
 
-                  //res返回值 标志是否有重名
+                  //res return value indicates if username already exists
                   if(this.res) {
                     this.register = false;
 
-                    //设置当前登陆状态；用于下次打开页面的默认登录
+                    //Set current login status for next page open default login
                     window.localStorage.setItem('loginStatus', 'login');
 
-                    //把用户【id】保存在vuex，便于home页面使用
+                    //Save user ID in vuex for home page use
                     //this.$store.commit('getUser', this.username);
                     await window.localStorage.setItem('userId', this.userId);
                     this.$store.commit('editUserId', this.userId);
-                    window.alert('注册成功，确定进入网站首页');
+                    window.alert('Registration successful, proceed to homepage');
                     await this.add_log()
                     if(this.radioVal==='用户'){
                     window.location.href = '/#/customerHome';
                   }else {
                   window.location.href = '/#/business';}
                   } else {
-                    window.alert('用户名重复，请再次尝试');
+                    window.alert('Username already exists, please try again');
                     this.username = '';
                     this.password = '';
                     this.confirmPassword = ''
@@ -104,7 +104,7 @@
           },
           async goHome(){
               if(!util.trim(this.username) || !util.trim(this.password) ){
-                  window.alert('账号或密码不能为空');
+                  window.alert('Username or password cannot be empty');
                   return;
               }
 
@@ -118,7 +118,7 @@
                   console.log(this.userId);
                   //console.log(error);
                 await this.add_log()
-                  window.alert('登陆成功，进入网站首页');
+                  window.alert('Login successful, entering homepage');
 
                   if(this.radioVal==='用户'){
                     window.location.href = '/#/customerHome';
@@ -128,7 +128,7 @@
                   window.location.href = '/#/manager';}
 
               }else{
-                  window.alert('账号或密码错误');
+                  window.alert('Incorrect username or password');
               }
           },
 
@@ -226,7 +226,7 @@
                 this.register = false;
                 await this.getType()
               await this.add_log()
-                window.alert('您已经是登录状态')
+                window.alert('You are already logged in')
                 if(this.radioVal==='用户'){
                     window.location.href = '/#/customerHome';
                   }else if(this.radioVal==='商家'){

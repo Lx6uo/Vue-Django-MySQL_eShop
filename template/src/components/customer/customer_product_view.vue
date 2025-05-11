@@ -1,19 +1,19 @@
 <template>
   <div v-if="product">
     <div class="product">
-      <!-- 商品图片、名称、价格 -->
+      <!-- Product image, name, price -->
       <div class="product-image">
         <img :src="`http://127.0.0.1:8001/media/${product.fields.product_image}`" alt="">
       </div>
       <div class="product-info">
         <h1 class="product-name">{{product.fields.product_name}}</h1>
-        <div class="product-cost">商品库存：{{product.fields.product_stock}}</div>
-        <div class="product-cost">商品销量：{{product.fields.product_sales}}</div>
-        <div class="product-cost">商品单价：{{product.fields.product_cost}}</div>
-        <div class="product-cost">商品品牌：{{product.fields.product_brand}}</div>
-        <div class="product-cost">商品颜色：{{product.fields.product_color}}</div>
+        <div class="product-cost">Stock: {{product.fields.product_stock}}</div>
+        <div class="product-cost">Sales: {{product.fields.product_sales}}</div>
+        <div class="product-cost">Price: {{product.fields.product_cost}}</div>
+        <div class="product-cost">Brand: {{product.fields.product_brand}}</div>
+        <div class="product-cost">Color: {{product.fields.product_color}}</div>
 
-        <div class="product-add-cart" @click="handleAddCart">加入购物车</div>
+        <div class="product-add-cart" @click="handleAddCart">Add to Cart</div>
          <div>
         <span class="fillheart" v-if="begood" @click="changeGood">
             <font-awesome-icon :icon="['fas', 'heart']" class="icon righticon" ></font-awesome-icon>
@@ -33,9 +33,9 @@
 
       </div>
     <div class="product-desc">
-      <h2>商家详情</h2>
+      <h2>Business Details</h2>
       <router-link :to="'/shop/' + product.fields.product_business">
-        点击进入商家主页
+        Click to enter business homepage
 
       </router-link>
        <div>
@@ -53,20 +53,20 @@
 
 
     <div class="product-desc">
-      <h2>产品介绍</h2>
+      <h2>Product Introduction</h2>
       <img :src="`http://127.0.0.1:8001/media/${product.fields.product_imageDetail}`" alt="">
     </div>
   </div>
 </template>
 
 <script>
-//导入本地数据
+//Import local data
 //import product_data from './product.js';
 
 export default {
   data(){
     return {
-      //获取路由中的参数
+      //Get parameters from route
       id: parseInt(this.$route.params.id),
       product: null,
       product_goods:0,
@@ -188,7 +188,7 @@ export default {
         .then((response) => {
             console.log(response);
             //this.list = response.data.list
-            window.alert("添加成功")
+            window.alert("Added successfully")
         })
         .catch(function (error) {
             console.log(error);
@@ -196,7 +196,7 @@ export default {
     }
   },
   async created(){
-    //初始化数据
+    //Initialize data
     console.log("detailview");
     console.log(this.id);
     await this.getProduct(this.id)
@@ -208,7 +208,7 @@ export default {
   },
 
   async mounted(){
-    //初始化数据
+    //Initialize data
     console.log("11detailview");
     console.log(this.id);
     await this.getProduct(this.id)

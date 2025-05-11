@@ -1,13 +1,13 @@
 <template>
     <div class="cart">
         <div class="cart-header">
-            <div class="cart-header-title">购物清单</div>
+            <div class="cart-header-title">Shopping List</div>
             <div class="cart-header-main">
-                <div class="cart-info">商品信息</div>
-                <div class="cart-price">单价</div>
-                <div class="cart-count">数量</div>
-                <div class="cart-cost">小计</div>
-                <div class="cart-delete">删除</div>
+                <div class="cart-info">Product Information</div>
+                <div class="cart-price">Unit Price</div>
+                <div class="cart-count">Quantity</div>
+                <div class="cart-cost">Subtotal</div>
+                <div class="cart-delete">Delete</div>
             </div>
         </div>
         <div class="cart-content">
@@ -33,31 +33,31 @@
                 </div>
                 <div class="cart-delete">
                     <span class="cart-control-delete"
-                          @click="handleDelete(index)">删除</span>
+                          @click="handleDelete(index)">Delete</span>
                 </div>
             </div>
-            <div class="cart-empty" v-if="!userCartList.length">购物车为空</div>
+            <div class="cart-empty" v-if="!userCartList.length">Shopping Cart is Empty</div>
         </div>
         <div class="cart-promotion" v-show="userCartList.length">
-            <span>使用优惠券</span>
+            <span>Use Coupon</span>
             <input type="text" v-model="promotionCode">
             <span class="cart-control-promotion"
-                  @click="handleCheckCode">验证</span>
+                  @click="handleCheckCode">Verify</span>
         </div>
         <div class="cart-footer" v-show="userCartList.length">
             <div class="cart-footer-desc">
-                共计 <span>{{countAll}}</span>
+                Total Items: <span>{{countAll}}</span>
             </div>
             <div class="cart-footer-desc">
-                应付总额 <span>{{costAll - promotion}}</span>
+                Total Amount: <span>{{costAll - promotion}}</span>
                 <br>
                 <template v-if="promotion">
-                    (优惠<span>￥ {{promotion}} </span>)
+                    (Discount: <span>￥ {{promotion}} </span>)
                 </template>
             </div>
             <div class="cart-footer-desc">
                 <div class="cart-control-order"
-                     @click="handleOrder">现在结算</div>
+                     @click="handleOrder">Checkout Now</div>
             </div>
         </div>
     </div>
@@ -80,14 +80,14 @@
         computed: {
 
 
-            //购物车商品总数
+            //Total number of items in shopping cart
             countAll(){
                 let count = 0;
                 this.userCartList.forEach(item => {
                     count += item.fields.num;
                 });
                 return count;
-            },//购物车商品总价
+            },//Total cost of items in shopping cart
             costAll(){
                 let cost = 0;
                 this.userCartList.forEach(item => {
@@ -101,7 +101,7 @@
 
         },
         methods: {
-            //通知Vuex,完成下单
+            //Notify Vuex, complete order
 
             async handleOrder(){
               let m=[]
@@ -120,20 +120,20 @@
 
               if(m.data.user_mobile===""){
                 console.log("null")
-                window.alert("请完善联系方式")
+                window.alert("Please complete contact information")
                 this.$router.push({path: '/customerPerson'})
                 return
               }
 
               if((m.data.user_province==="")||(m.data.user_city==="")||(m.data.user_area==="")){
-                window.alert("请完善地址")
+                window.alert("Please complete address information")
                 this.$router.push({path: '/customerPerson'})
                 return
               }
 
 
               if(m.data.user_address===""){
-                window.alert("请完善详细地址")
+                window.alert("Please complete detailed address")
                 this.$router.push({path: '/customerPerson'})
                 return
               }
@@ -160,7 +160,7 @@
               .then((response) => {
                   console.log(response);
                   //this.list = response.data.list
-                  //window.alert("删除成功")
+                  //window.alert("Delete successful")
               })
               .catch(function (error) {
                   console.log(error);
@@ -170,7 +170,7 @@
 
 
 
-              window.alert('购买成功');
+              window.alert('Purchase successful');
 
 
             },
@@ -179,14 +179,14 @@
 
 
 
-            //验证优惠码，使用ccylovehs代替优惠券字符串
+            //Verify promotion code, use ccylovehs as the coupon string
             handleCheckCode(){
                 if(this.promotionCode === ''){
-                    window.alert('请输入优惠码');
+                    window.alert('Please enter promotion code');
                     return;
                 }
                 if(this.promotionCode !== 'ccylovehs'){
-                    window.alert('优惠码输入错误');
+                    window.alert('Promotion code is incorrect');
                     return;
                 }
                 this.promotion = 500;
@@ -213,14 +213,14 @@
               await this.cartList(this.$store.state.userId)
             },
 
-            //根据index查找商品id进行删除
+            //Delete product by finding product id according to index
             async handleDelete(index){
               await this.axios.get('delete_item_in_cart/',
                   {params:{user_id: this.$store.state.userId, product_id: this.userCartList[index].fields.product_id}})
               .then((response) => {
                   console.log(response);
                   //this.list = response.data.list
-                  //window.alert("删除成功")
+                  //window.alert("Delete successful")
               })
               .catch(function (error) {
                   console.log(error);
@@ -231,7 +231,7 @@
               //const index = state.cartList.findIndex(item => item.id === id);
               //state.cartList.splice(index, 1)
             },
-            //购物车数据
+            //Shopping cart data
             async cartList(x1){
               await this.axios.get('show_cart/',{params:{user_id: x1}})
               .then((response) => {

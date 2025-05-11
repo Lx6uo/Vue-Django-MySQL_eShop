@@ -5,29 +5,29 @@
     <div class="order-content">
 
       <div class="title">
-        <h3>我的订单</h3>
+        <h3>My Orders</h3>
       </div>
       <div class="chosetype">
         <table>
           <thead>
           <tr>
-            <th style="width:29%">商品</th>
-            <th style="width:31%">订单详情</th>
-            <th style="width:13%">收货人</th>
-            <th>金额</th>
-            <th>状态</th>
-            <th>操作</th>
+            <th style="width:29%">Product</th>
+            <th style="width:31%">Order Details</th>
+            <th style="width:13%">Recipient</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Operation</th>
           </tr>
           </thead>
         </table>
       </div>
       <div class="orders">
-        <!-- 每一笔订单 -->
+        <!-- Each order -->
         <table class="order-item" v-for="order in myOrder" :key="order.id">
           <thead>
           <tr>
             <th colspan="5">
-                <span class="ordertitle">{{ order.createTime }}订单编号:{{ order.outTradeNo }}
+                <span class="ordertitle">{{ order.createTime }} Order Number: {{ order.outTradeNo }}
                   <span class="pull-right delete"><img src="./images/delete.png" />
                   </span></span>
             </th>
@@ -40,15 +40,15 @@
                   <img :src="cart.imgUrl" style="width:100px;height:100px;"/>
                   <a style="width: 30%" href="#" class="block-text">{{cart.skuName}}</a>
                   <a style="width: 40%">x{{cart.skuNum}}</a>
-                  <a style="width: 30%" href="#" class="service">售后申请</a>
+                  <a style="width: 30%" href="#" class="service">After-sales Service</a>
                 </div>
             </td>
 
             <td :rowspan="order.orderDetailList.length" v-if="index==0" style="width:8%" class="center">{{order.consignee}}</td>
             <td :rowspan="order.orderDetailList.length" v-if="index==0" style="width:13%" class="center">
               <ul class="unstyled">
-                <li>总金额¥{{order.totalAmount}}.00</li>
-                <li>在线支付</li>
+                <li>Total Amount: ¥{{order.totalAmount}}.00</li>
+                <li>Online Payment</li>
               </ul>
             </td>
             <td :rowspan="order.orderDetailList.length" v-if="index==0" style="width:8%" class="center">
@@ -57,7 +57,7 @@
             <td :rowspan="order.orderDetailList.length" v-if="index==0" style="width:13%" class="center">
               <ul class="unstyled">
                 <li>
-                  <a href="" target="_blank">评价|晒单</a>
+                  <a href="" target="_blank">Review | Share</a>
                 </li>
               </ul>
             </td>
@@ -75,26 +75,26 @@ export default {
   name:"orderS",
   data() {
     return {
-      //初始化参数
-      //当前第几页
+      //Initialize parameters
+      //Current page number
       page: 1,
-      //每一页展示数据个数
+      //Number of items per page
       limit: 3,
-      //存储我的订单的数据
+      //Store my order data
       myOrder:{}
     }
   },
   mounted () {
-    //获取我的订单的数据方法
+    //Method to get my order data
     this.getData()
   },
   methods: {
-    //获取我的订单的方法
+    //Method to get my orders
     async getData() {
-      //解构出参数
+      //Destructure parameters
       this.myOrder = order_data;
     },
-    //获取当前点击的那一页
+    //Get the currently clicked page
   },
 };
 </script>
