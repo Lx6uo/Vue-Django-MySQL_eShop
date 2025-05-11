@@ -3,14 +3,14 @@
 
     <div class="list-control">
       <div class="list-control-filter">
-        <span>品牌:</span>
+        <span>Brand:</span>
         <span class="list-control-filter-item"
               :class="{on: item === filterBrand}"
               v-for="item in brands" :key="item.index"
               @click="handleFilterBrand(item)" >{{item}}</span>
       </div>
       <div class="list-control-filter">
-        <span>颜色:</span>
+        <span>Color:</span>
         <span class="list-control-filter-item"
               :class="{on: item === filterColor}"
               v-for="item in colors" :key="item.index"
@@ -18,20 +18,20 @@
       </div>
 
       <div class="list-control-order">
-        <span>排序:</span>
+        <span>Sort:</span>
         <span class="list-control-order-item"
               :class="{on: order === ''}"
-              @click="handleOrderDefault">默认</span>
+              @click="handleOrderDefault">Default</span>
         <span class="list-control-order-item"
               :class="{on: order === 'sales'}"
               @click="handleOrderSales">
-                    销量
+                    Sales
                     <template v-if="order === 'sales'">↓</template>
                 </span>
         <span class="list-control-order-item"
               :class="{on: order.indexOf('cost') > -1}"
               @click="handleOrderCost">
-                    价格
+                    Price
                     <template v-if="order === 'cost-desc'">↓</template>
                     <template v-if="order === 'cost-asc'">↑</template>
                 </span>
@@ -41,7 +41,7 @@
       <Customer_Product v-for="item in filteredAndOrderedList" :info="item" :key="item.fields.id"></Customer_Product>
     </div>
     <div class="product-not-found"
-         v-show="!filteredAndOrderedList.length">暂无相关商品</div>
+         v-show="!filteredAndOrderedList.length">No relevant products</div>
     <!--猜你喜欢-->
     <!--转换成 v-for--后端实现 todo
 <br><br>

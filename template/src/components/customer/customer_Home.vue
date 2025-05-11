@@ -1,12 +1,12 @@
 <template>
 
   <div class="home">
-    <div class="header">头部</div>
+    <div class="header">Header</div>
 
     <template v-if="show">
       <div class="header">
         <router-link to="/customerHome"
-                     class="header-title">电商网站首页</router-link>
+                     class="header-title">E-commerce Homepage</router-link>
     <br><br>
 
 
@@ -33,8 +33,8 @@
 
         <!--搜索框-->
         <div class="searchBox">
-    <input type="text" v-model="inputText" placeholder="请输入关键词进行搜索" class="searchInput" style="padding-left: 10px;">
-    <input type="button"  @click="Click" value="搜索" class="searchButton">
+    <input type="text" v-model="inputText" placeholder="Enter keywords to search" class="searchInput" style="padding-left: 10px;">
+    <input type="button"  @click="Click" value="Search" class="searchButton">
   </div>
 <div class="header-menu" style="float: right">
   <v-avatar color="teal" size="48">
@@ -47,7 +47,7 @@
       <v-row align="center">
       <div class="search_bar1">
         <form>
-          <input type="text" v-model="inputText" placeholder="请输入您要搜索的内容...">
+          <input type="text" v-model="inputText" placeholder="Enter your search content...">
 
         </form>
         </div>
@@ -60,7 +60,7 @@
         <div class="header-menu">
           <router-link to="/login/logout"
                        class="header-menu-cart">
-            退出登录
+            Logout
           </router-link>
         </div>
         -->
@@ -102,7 +102,7 @@ export default {
 
     async Click(){
       if(this.inputText===''){
-        window.alert('请输入搜索内容')
+        window.alert('Please enter search content')
         return
       }
       this.$store.state.searchText=this.inputText
