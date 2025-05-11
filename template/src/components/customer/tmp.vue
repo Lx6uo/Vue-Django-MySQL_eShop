@@ -52,7 +52,7 @@
           <div class="pa-2">
             <router-link to="/login/logout">
           <v-btn block>
-            退出登录
+            Logout
           </v-btn>
             </router-link>
           </div>
@@ -77,10 +77,10 @@ export default {
     cards: ['Today', 'Yesterday'],
     user:'',
     drawer: null,
-    links:[{ text: '首页', icon: 'mdi-inbox-arrow-down',route:"/customerHome"},
-          { text: '购物车', icon: 'mdi-dolly',route:"/cart"},
-          { text: '历史订单', icon: 'mdi-cash-refund',route:"/customerOrder2"},
-        { text: '个人中心', icon: 'mdi-send',route:"/customerPerson"},
+    links:[{ text: 'Home', icon: 'mdi-inbox-arrow-down',route:"/customerHome"},
+          { text: 'Shopping Cart', icon: 'mdi-dolly',route:"/cart"},
+          { text: 'Order History', icon: 'mdi-cash-refund',route:"/customerOrder2"},
+        { text: 'Personal Center', icon: 'mdi-send',route:"/customerPerson"},
 
 
 
