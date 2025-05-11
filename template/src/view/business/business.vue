@@ -1,4 +1,4 @@
-<!-- business主页面 -->
+<!-- Business Main Page -->
 <template>
   <div class="text-center">
     <v-app-bar
@@ -53,7 +53,7 @@
         <div class="pa-2">
           <router-link to="/login/logout">
           <v-btn block>
-            退出登录
+            Logout
           </v-btn>
             </router-link>
         </div>
@@ -77,10 +77,10 @@ export default {
   data: () => ({
     drawer: null,
     user:"",
-    links:[{ text: '订单信息', icon: 'mdi-cash-refund',route:"/business/order"},
-      { text: '上架商品', icon: 'mdi-dolly',route:"/business/commodity"},
-      { text: '销售数据', icon: 'mdi-inbox-arrow-down',route:"/business/saledata"},
-      { text: '店铺信息', icon: 'mdi-send',route:"/business/information"},],
+    links:[{ text: 'Order Information', icon: 'mdi-cash-refund',route:"/business/order"},
+      { text: 'Product Listing', icon: 'mdi-dolly',route:"/business/commodity"},
+      { text: 'Sales Data', icon: 'mdi-inbox-arrow-down',route:"/business/saledata"},
+      { text: 'Shop Information', icon: 'mdi-send',route:"/business/information"},],
   }),
   async created(){
     await this.axios.get('userId2userName/',{params:{user_id: this.$store.state.userId}})

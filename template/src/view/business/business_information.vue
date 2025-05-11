@@ -56,10 +56,10 @@
       <v-col class="ml-3">
         <v-card>
           <v-tabs>
-            <v-tab>个人设置</v-tab>
-            <v-tab>修改密码</v-tab>
+            <v-tab>Personal Settings</v-tab>
+            <v-tab>Change Password</v-tab>
 
-            <!-- 个人设置 -->
+            <!-- Personal Settings -->
             <v-tab-item>
               <v-card flat class="pa-3">
                 <v-row>
@@ -70,7 +70,7 @@
                         <v-row>
                           <v-col md="12">
                             <v-text-field
-                                label="用户名"
+                                label="Username"
                                 :rules="profileRules.user_name"
                                 v-model="profileForm.user_name"
                                 clearable
@@ -80,7 +80,7 @@
                         <v-row>
                           <v-col md="12">
                             <v-text-field
-                                label="手机号码"
+                                label="Mobile Number"
                                 :rules="profileRules.user_mobile"
                                 v-model="profileForm.user_mobile"
                                 clearable
@@ -90,7 +90,7 @@
                         <v-row>
                           <v-card>
                             <v-col>
-                              详细地址
+                              Detailed Address
                               <region-selects
 
 
@@ -104,7 +104,7 @@
                             </v-col>
                             <v-col>
                               <v-text-field
-                                label="详细地址"
+                                label="Detailed Address"
                                 :rules="profileRules.user_email"
                                 v-model="profileForm.user_address"
                                 clearable
@@ -117,18 +117,18 @@
                   </v-col>
                   <v-col md="6">
                     <!-- <avatar-upload
-                        tips-text="拖拽或单击进行上传图片"
+                        tips-text="Drag or click to upload image"
                         v-model="profileForm.user_avatar"
                     />-->
 
                     <el-form ref="form" :model="profileForm" label-width="80px">
-                      <el-form-item label="头像">
+                      <el-form-item label="Avatar">
                         <input type="file" @change="getImageFile" id="img">
 
                         <img :src="showImage"  height="150px" width="150px">
                       </el-form-item>
                       <el-form-item>
-                        <el-button type="primary" @click="onSubmit">确认添加</el-button>
+                        <el-button type="primary" @click="onSubmit">Confirm</el-button>
                       </el-form-item>
                     </el-form>
                   </v-col>
@@ -144,7 +144,7 @@
                         color="secondary"
                         @click="resetProfile"
                     >
-                      重置
+                      Reset
                     </v-btn>
                     <v-btn
                         small
@@ -153,14 +153,14 @@
                         color="primary"
                         @click="saveProfile"
                     >
-                      保存
+                      Save
                     </v-btn>
                   </v-col>
                 </v-row>
               </v-card>
             </v-tab-item>
 
-            <!-- 修改密码 -->
+            <!-- Change Password -->
             <v-tab-item>
               <v-card flat class="pa-3">
                 <v-row justify="center" align="center">
@@ -171,7 +171,7 @@
                         <v-row>
                           <v-col md="12">
                             <v-text-field
-                                label="旧密码"
+                                label="Old Password"
                                 :rules="passwordRules.oldPassword"
                                 v-model="passwordForm.oldPassword"
                                 type="password"
@@ -182,7 +182,7 @@
                         <v-row>
                           <v-col md="12">
                             <v-text-field
-                                label="新密码"
+                                label="New Password"
                                 :rules="passwordRules.newPassword"
                                 v-model="passwordForm.newPassword"
                                 id="newPassword"
@@ -194,7 +194,7 @@
                         <v-row>
                           <v-col md="12">
                             <v-text-field
-                                label="确认密码"
+                                label="Confirm Password"
                                 :rules="passwordRules.confirmPassword"
                                 v-model="passwordForm.confirmPassword"
                                 id="confirmPassword"
@@ -216,7 +216,7 @@
                         color="primary"
                         @click="passwordUpate"
                     >
-                      保存
+                      Save
                     </v-btn>
                   </v-col>
                 </v-row>
@@ -265,8 +265,8 @@ export default {
 
       ],
       tabItems: [
-        {tab: "profile", content: "个人设置"},
-        {tab: "password", content: "修改密码"},
+        {tab: "profile", content: "Personal Settings"},
+        {tab: "password", content: "Change Password"},
       ],
       usercard: "",
       userInfo: {
@@ -292,14 +292,14 @@ export default {
         user_avatar: "",
       },
       profileRules: {
-        user_name: [required("用户名")],
+        user_name: [required("Username")],
         user_mobile: [
-          required("手机号码"),
+          required("Mobile Number"),
           function (v) {
-            return /^1[3456789]\d{9}$/.test(v) || `手机号码格式错误`;
+            return /^1[3456789]\d{9}$/.test(v) || `Invalid mobile number format`;
           },
         ],
-        user_email: [required("地址")],
+        user_email: [required("Address")],
 
       },
       passwordForm: {
@@ -308,9 +308,9 @@ export default {
         confirmPassword: "",
       },
       passwordRules: {
-        oldPassword: [required("密码")],
-        newPassword: [required("密码")],
-        confirmPassword: [required("密码")],
+        oldPassword: [required("Password")],
+        newPassword: [required("Password")],
+        confirmPassword: [required("Password")],
       },
       addrSelectRules:""
 
@@ -380,7 +380,7 @@ export default {
 
         {
           icon: "mdi-update",
-          text: `加入于 ${this.userInfo.user_createtime}`
+          text: `Joined on ${this.userInfo.user_createtime}`
         },
 
         {
@@ -468,31 +468,31 @@ export default {
         //formData.append('forms',JSON.stringify(this.profileForm))
 
         if(this.profileForm.user_name==''){
-          window.alert('请完善用户名')
+          window.alert('Please complete username')
           return
         }else if(this.profileForm.user_mobile==''){
-          window.alert('请完善手机号码')
+          window.alert('Please complete mobile number')
           return
         }else if(this.profileForm.user_address==''){
-          window.alert('请完善详细地址')
+          window.alert('Please complete detailed address')
           return
         }else if(!this.region.area){
-          window.alert('请完善地址')
+          window.alert('Please complete address')
           return
         }else if(!this.region.province){
-          window.alert('请完善地址')
+          window.alert('Please complete address')
           return
         }else if(!this.region.city){
-          window.alert('请完善地址')
+          window.alert('Please complete address')
           return
         }else if(this.region.area===''){
-          window.alert('请完善地址')
+          window.alert('Please complete address')
           return
         }else if(this.region.province===''){
-          window.alert('请完善地址')
+          window.alert('Please complete address')
           return
         }else if(this.region.city===''){
-          window.alert('请完善地址')
+          window.alert('Please complete address')
           return
         }
 
@@ -553,7 +553,7 @@ export default {
           .then((response) => {
             console.log(response)
             this.initBaseInfo()
-            this.$toast.success("保存成功", {
+            this.$toast.success("Saved successfully", {
               position: "top-center",
             });
           })
@@ -565,17 +565,17 @@ export default {
     },
 
     // Responding to data changes
-    // 地址选择器
+    // Address selector
     regionChange (data) {
       console.log(data)
     },
 
     async passwordUpate() {
       if (this.passwordForm.newPassword!==this.passwordForm.confirmPassword) {
-       window.alert('请保持密码一致')
+       window.alert('Please keep passwords consistent')
       }
       if (this.passwordForm.newPassword=="") {
-       window.alert('密码不能为空')
+       window.alert('Password cannot be empty')
       }
 
       await this.axios.get('edit_password/',
@@ -585,16 +585,16 @@ export default {
               .catch(function (error) {
                   console.log(error);
                   this.res=false
-                window.alert('请重新确认原密码')
+                window.alert('Please reconfirm original password')
               })
               .then((response) => {
                 if(response.data.error_num!==0){
                   this.res=false
                   console.log(response.data.msg);
-                  window.alert('请重新确认原密码')
+                  window.alert('Please reconfirm original password')
                   return
                 }
-                window.alert('密码修改成功')
+                window.alert('Password changed successfully')
 
                 this.res=true
               })
@@ -646,11 +646,11 @@ console.log("fffffftt")
 
     async checkSelectAddr(){
       this.profileRules = {
-        user_name: [required("用户名")],
+        user_name: [required("Username")],
         user_mobile: [
-          required("手机号码"),
+          required("Mobile Number"),
           function (v) {
-            return /^1[3456789]\d{9}$/.test(v) || `手机号码格式错误`;
+            return /^1[3456789]\d{9}$/.test(v) || `Invalid mobile number format`;
           },
         ],
         user_email: [required("地址"),
@@ -664,11 +664,11 @@ console.log("fffffftt")
     initPasswordRules() {
 
       this.profileRules = {
-        user_name: [required("用户名")],
+        user_name: [required("Username")],
         user_mobile: [
-          required("手机号码"),
+          required("Mobile Number"),
           function (v) {
-            return /^1[3456789]\d{9}$/.test(v) || `手机号码格式错误`;
+            return /^1[3456789]\d{9}$/.test(v) || `Invalid mobile number format`;
           },
         ],
         user_email: [required("地址"),

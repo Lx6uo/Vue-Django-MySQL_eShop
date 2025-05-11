@@ -16,7 +16,7 @@
           >
             <v-spacer></v-spacer>
             <v-toolbar-title>
-              <h4>上架商品</h4>
+              <h4>Product Listing</h4>
             </v-toolbar-title>
             <v-spacer></v-spacer>
           </v-toolbar>
@@ -94,21 +94,21 @@
       </v-data-iterator>
     </v-container>
     <div class="container">
-      {{ upload_file || "导入" }}
+      {{ upload_file || "Import" }}
       <input
         type="file"
         accept=".xls,.xlsx"
         class="upload_file"
         @change="readExcel($event)"
       />
-      <el-button type="success" @click="addExcelStock">导入excel库存</el-button>
+      <el-button type="success" @click="addExcelStock">Import Excel Inventory</el-button>
     </div>
     <v-btn
       class="ma-2"
       color="success"
       @click="addCommodity"
     >
-      添加商品
+      Add Product
     </v-btn>
 
   </div>
@@ -137,9 +137,9 @@ export default {
       productsList:[],
       items:[
         {
-          name: "手机",
-          库存: 10000,
-          金额: "5000元",
+          name: "Phone",
+          inventory: 10000,
+          amount: "5000 Yuan",
         },
       ],
     }
@@ -193,7 +193,7 @@ export default {
 
               if(m.data.user_mobile===""){
                 console.log("null")
-                window.alert("请完善联系方式")
+                window.alert("Please complete your contact information")
                 this.$router.push({path: '/business/information'})
                 return
               }

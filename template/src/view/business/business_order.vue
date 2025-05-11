@@ -9,7 +9,7 @@
 
         <v-spacer></v-spacer>
         <v-toolbar-title>
-          <h4>订单信息</h4>
+          <h4>Order Information</h4>
         </v-toolbar-title>
         <v-spacer></v-spacer>
       </v-toolbar>
@@ -17,24 +17,24 @@
       <v-col class="ml-3">
         <v-tabs v-model="tab" >
             <v-tabs-slider color="blue"></v-tabs-slider>
-            <v-tab >买家未付款</v-tab>
-            <v-tab >商家未发货</v-tab>
-            <v-tab >买家未到货</v-tab>
-            <v-tab>买家未收货</v-tab>
-            <v-tab>买家已确认订单</v-tab>
+            <v-tab >Unpaid by Buyer</v-tab>
+            <v-tab >Unshipped by Seller</v-tab>
+            <v-tab >In Transit</v-tab>
+            <v-tab>Unconfirmed by Buyer</v-tab>
+            <v-tab>Order Confirmed</v-tab>
 
-            <!-- 买家未付款 -->
+            <!-- Unpaid by Buyer -->
             <v-tab-item>
               <Order_weifukuan :tabkey="tab"></Order_weifukuan>
             </v-tab-item>
 
-            <!-- 商家未发货 -->
+            <!-- Unshipped by Seller -->
             <v-tab-item>
               <!-- <Order_content></Order_content> -->
               <Order_toDelivery :tabkey="tab"></Order_toDelivery>
             </v-tab-item>
 
-            <!-- 商家已发货 -->
+            <!-- Shipped by Seller -->
             <v-tab-item>
               <v-card flat>
                 <!-- <Order_content></Order_content> -->
@@ -42,13 +42,13 @@
               </v-card>
             </v-tab-item>
 
-            <!-- 买家已收货 -->
+            <!-- Received by Buyer -->
             <v-tab-item>
               <!-- <Order_content></Order_content> -->
               <Order_toFetch :tabkey="tab"></Order_toFetch>
             </v-tab-item>
 
-            <!-- 买家已确认订单 -->
+            <!-- Order Confirmed by Buyer -->
             <v-tab-item>
               <!-- <Order_content></Order_content> -->
               <Order_finished :tabkey="tab"></Order_finished>
