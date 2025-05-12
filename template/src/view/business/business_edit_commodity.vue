@@ -9,7 +9,7 @@
         >
           <v-spacer></v-spacer>
           <v-toolbar-title>
-            <h4>添加商品</h4>
+            <h4>Edit Product</h4>
           </v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
@@ -18,12 +18,12 @@
             <v-row>
               <v-col md="6">
                 <v-form ref="form">
-                  <!-- 字段渲染 -->
+                  <!-- Field Rendering -->
                   <v-container>
                     <v-row>
                       <v-col md="12">
                         <v-text-field
-                            label="商品名"
+                            label="Product Name"
                             :rules="formEmptyRule"
                             v-model="productForm.product_name"
                             clearable
@@ -33,7 +33,7 @@
                     <v-row>
                       <v-col md="12">
                         <v-text-field
-                            label="商品品牌"
+                            label="Product Brand"
                             :rules="formEmptyRule"
                             v-model="productForm.product_brand"
                             clearable
@@ -43,7 +43,7 @@
                     <v-row>
                       <v-col md="12">
                         <v-text-field
-                            label="商品颜色"
+                            label="Product Color"
                             :rules="formEmptyRule"
                             v-model="productForm.product_color"
                             clearable
@@ -54,7 +54,7 @@
                     <v-row>
                       <v-col md="12">
                         <v-text-field
-                            label="商品售价"
+                            label="Product Price"
                             :rules="costRule"
                             v-model="productForm.product_cost"
                             clearable
@@ -65,7 +65,7 @@
                     <v-row>
                       <v-col md="12">
                         <v-text-field
-                            label="商品库存"
+                            label="Product Inventory"
                             :rules="formEmptyRule"
                             clearable
                         />
@@ -77,14 +77,14 @@
               </v-col>
               <v-col md="6">
                 <el-form ref="form" :model="productForm" label-width="80px">
-                  <el-form-item label="主页图片">
+                  <el-form-item label="Main Image">
                     <input type="file" @change="getImageFile1" id="img">
                     <img :src="showPic1" height="150px" width="150px"/>
                   </el-form-item>
 
                 </el-form>
                 <el-form ref="form" :model="productForm" label-width="80px">
-                  <el-form-item label="细节图片">
+                  <el-form-item label="Detail Image">
                     <input type="file" @change="getImageFile2" id="img">
                     <img :src="showPic2" height="150px" width="150px"/>
                   </el-form-item>
@@ -102,7 +102,7 @@
                     color="primary"
                     @click="saveProduct"
                 >
-                  添加
+                  Save
                 </v-btn>
               </v-col>
             </v-row>
@@ -118,27 +118,27 @@
 import {required} from "@/utils/widget";
 
 export default {
-  name: "business_add_commodity",
+  name: "business_edit_commodity",
   data() {
     return {
       id: parseInt(this.$route.params.id),
 
       productForm: {
-        product_name: "", // 商品名
-        product_color: "", // 商品颜色
-        // TODO：商品进价/商品售价
-        product_brand: "", // 商品库存
-        product_cost: "", // 商品库存
-        product_image1: "", // 主页图片
+        product_name: "", // Product name
+        product_color: "", // Product color
+        // TODO: Product cost/selling price
+        product_brand: "", // Product brand
+        product_cost: "", // Product price
+        product_image1: "", // Main image
         product_image2: ""
-        // TODO：细节图片
+        // TODO: Detail image
       },
       showPic1:"",
       showPic2:"",
-      formEmptyRule: [required("此栏目")],
-      costRule:[required("此栏目"),
+      formEmptyRule: [required("This field")],
+      costRule:[required("This field"),
           function (v) {
-            return  /^(([1-9]{1}\d*)|(0{1}))(\.\d{1,2})?$/.test(v) || `金额最多两位小数`;
+            return  /^(([1-9]{1}\d*)|(0{1}))(\.\d{1,2})?$/.test(v) || `Amount can have at most 2 decimal places`;
           }
       ]
 
@@ -156,12 +156,12 @@ export default {
         .then((response) => {
             console.log(response);
             this.productForm={
-        product_name: response.data.product.fields.product_name, // 商品名
-        product_color: response.data.product.fields.product_color, // 商品颜色
+        product_name: response.data.product.fields.product_name, // Product name
+        product_color: response.data.product.fields.product_color, // Product color
 
-        product_brand: response.data.product.fields.product_brand, // 商品库存
-        product_cost: response.data.product.fields.product_cost, // 商品库存
-        product_image1: null, // 主页图片
+        product_brand: response.data.product.fields.product_brand, // Product brand
+        product_cost: response.data.product.fields.product_cost, // Product price
+        product_image1: null, // Main image
         product_image2: null
 
       };
@@ -174,7 +174,7 @@ export default {
 
         });
     },
-    // TODO：保存商品信息
+    // TODO: Save product information
     async saveProduct() {
       let formData = new FormData();
         formData.append('product_image1', this.productForm.product_image1);
@@ -221,7 +221,7 @@ export default {
 
 
 
-          window.alert("商品修改申请已成功提交，请耐心等待审核通过")
+          window.alert("Product modification request has been successfully submitted, please wait for review approval")
           this.$router.push({path: '/business/commodity'})
 
 
