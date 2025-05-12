@@ -17,7 +17,7 @@
           >
             <v-spacer></v-spacer>
             <v-toolbar-title>
-              <h4>用户登录日志</h4>
+              <h4>User Login Logs</h4>
             </v-toolbar-title>
             <v-spacer></v-spacer>
           </v-toolbar>
@@ -33,7 +33,7 @@
           <v-list-item-content>
             <v-row>
 
-        <!--用户名-->
+        <!--Username-->
         <v-col>
           <v-list-item-title>{{ item.fields.log_name }}</v-list-item-title>
         </v-col>

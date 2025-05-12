@@ -5,7 +5,7 @@
         :key="item.pk"
     >
       <v-expansion-panel-header>
-        <!--蓝底头像+用户名-->
+        <!--Blue background avatar + username-->
         <v-col>
           <!--
           <v-avatar
@@ -19,15 +19,15 @@
           <img :src="`http://127.0.0.1:8001/media/${userAvatar[item.fields.customer_id]}`" alt=""
                     height="50px" width="50px">
         </v-col>
-        <!--用户名-->
+        <!--Username-->
         <v-col>
           <v-list-item-title>{{ item.fields.customer_name }}</v-list-item-title>
         </v-col>
-        <!--下单时间-->
+        <!--Order time-->
         <v-col>
           <v-list-item-title>{{ item.fields.order_createtime | format  }}</v-list-item-title>
         </v-col>
-        <!--地址-->
+        <!--Address-->
         <v-col>
           <!--<v-list-item-title>{{ item.address }}</v-list-item-title>-->
           <region-text
@@ -51,7 +51,7 @@
       <v-expansion-panel-content>
 
         <Order_cart :info="item" :orderProducts="orderProducts" :productDictList="nowProduct" ></Order_cart>
-         <!-- 提醒付款：需要消息系统，后续实现-->
+         <!-- Payment reminder: Message system needed, to be implemented later-->
 
         <v-col>
           <v-btn

@@ -1,4 +1,4 @@
-<!-- business主页面 -->
+<!-- Manager Main Page -->
 <template>
   <div class="text-center">
     <v-app-bar
@@ -53,7 +53,7 @@
         <div class="pa-2">
           <router-link to="/login/logout">
           <v-btn block>
-            退出登录
+            Logout
           </v-btn>
             </router-link>
         </div>
@@ -77,9 +77,9 @@ export default {
   data: () => ({
     drawer: null,
     user:"",
-    links:[{ text: '审核商品', icon: 'mdi-inbox-arrow-down',route:"/manager/check"},
-      { text: '登录日志', icon: 'mdi-send',route:"/manager/log"},
-      { text: '操作日志', icon: 'mdi-delete',route:"/manager/actionlog"},
+    links:[{ text: 'Review Products', icon: 'mdi-inbox-arrow-down',route:"/manager/check"},
+      { text: 'Login Logs', icon: 'mdi-send',route:"/manager/log"},
+      { text: 'Operation Logs', icon: 'mdi-delete',route:"/manager/actionlog"},
       ],
   }),
   async created(){

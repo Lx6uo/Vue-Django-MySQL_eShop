@@ -2,10 +2,10 @@
     <div class="cart">
         <div class="cart-header">
             <div class="cart-header-main">
-                <div class="cart-info">商品信息</div>
-                <div class="cart-price">单价</div>
-                <div class="cart-count">数量</div>
-                <div class="cart-cost">小计</div>
+                <div class="cart-info">Product Information</div>
+                <div class="cart-price">Unit Price</div>
+                <div class="cart-count">Quantity</div>
+                <div class="cart-cost">Subtotal</div>
             </div>
         </div>
         <div class="cart-content">
@@ -28,14 +28,14 @@
                     ￥ {{item.fields.order_product_cost * (item.fields.num-0.0)}}
                 </div>
             </div>
-            <div class="cart-empty" v-if="!cart_list.length">无商品</div>
+            <div class="cart-empty" v-if="!cart_list.length">No Products</div>
         </div>
         <div class="cart-footer" v-show="cart_list.length">
             <div class="cart-footer-desc">
-                共计 <span>{{countAll}}</span>
+                Total Items: <span>{{countAll}}</span>
             </div>
             <div class="cart-footer-desc">
-                总额 <span>{{costAll}}</span>
+                Total Amount: <span>{{costAll}}</span>
                 <br>
 
             </div>

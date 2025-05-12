@@ -9,7 +9,7 @@
         >
           <v-spacer></v-spacer>
           <v-toolbar-title>
-            <h4>添加商品</h4>
+            <h4>Add Product</h4>
           </v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
@@ -23,7 +23,7 @@
                     <v-row>
                       <v-col md="12">
                         <v-text-field
-                            label="商品名"
+                            label="Product Name"
                             :rules="formEmptyRule"
                             v-model="productForm.product_name"
                             clearable
@@ -33,7 +33,7 @@
                     <v-row>
                       <v-col md="12">
                         <v-text-field
-                            label="商品品牌"
+                            label="Product Brand"
                             :rules="formEmptyRule"
                             v-model="productForm.product_brand"
                             clearable
@@ -43,7 +43,7 @@
                     <v-row>
                       <v-col md="12">
                         <v-text-field
-                            label="商品颜色"
+                            label="Product Color"
                             :rules="formEmptyRule"
                             v-model="productForm.product_color"
                             clearable
@@ -54,7 +54,7 @@
                     <v-row>
                       <v-col md="12">
                         <v-text-field
-                            label="商品售价"
+                            label="Product Price"
                             :rules="costRule"
                             v-model="productForm.product_cost"
                             clearable
@@ -77,14 +77,14 @@
               </v-col>
               <v-col md="6">
                 <el-form ref="form" :model="productForm" label-width="80px">
-                  <el-form-item label="主页图片">
+                  <el-form-item label="Main Image">
                     <input type="file" @change="getImageFile1" id="img">
                     <img :src="showPic1" height="150px" width="150px"/>
                   </el-form-item>
 
                 </el-form>
                 <el-form ref="form" :model="productForm" label-width="80px">
-                  <el-form-item label="细节图片">
+                  <el-form-item label="Detail Image">
                     <input type="file" @change="getImageFile2" id="img">
                     <img :src="showPic2" height="150px" width="150px"/>
                   </el-form-item>
@@ -102,7 +102,7 @@
                     color="primary"
                     @click="saveProduct"
                 >
-                  添加
+                  Add
                 </v-btn>
               </v-col>
             </v-row>
@@ -122,21 +122,21 @@ export default {
   data() {
     return {
       productForm: {
-        product_name: "", // 商品名
-        product_color: "", // 商品颜色
-        // TODO：商品进价/商品售价
-        product_brand: "", // 商品库存
-        product_cost: "", // 商品库存
+        product_name: "", // Product Name
+        product_color: "", // Product Color
+        // TODO: Product Cost/Product Price
+        product_brand: "", // Product Brand
+        product_cost: "", // Product Price
         product_image1: 'http://127.0.0.1:8001/media/avatar/default_pic.jpg', // 主页图片
         product_image2: 'http://127.0.0.1:8001/media/avatar/default_pic.jpg'
         // TODO：细节图片
       },
       showPic1:'http://127.0.0.1:8001/media/avatar/default_pic.jpg',
       showPic2:'http://127.0.0.1:8001/media/avatar/default_pic.jpg',
-      formEmptyRule: [required("此栏目")],
-      costRule:[required("此栏目"),
+      formEmptyRule: [required("This field")],
+      costRule:[required("This field"),
           function (v) {
-            return  /^(([1-9]{1}\d*)|(0{1}))(\.\d{1,2})?$/.test(v) || `金额最多两位小数`;
+            return  /^(([1-9]{1}\d*)|(0{1}))(\.\d{1,2})?$/.test(v) || `Amount can have at most two decimal places`;
           }
       ]
 
@@ -182,7 +182,7 @@ export default {
 
 
           window.location.href = '/#/business/commodity';
-          window.alert("商品成功上架")
+          window.alert("Product successfully listed")
 
           }
         console.log(response)
@@ -217,11 +217,11 @@ export default {
     },
     clear(){
       this.productForm={
-        product_name: "", // 商品名
-        product_color: "", // 商品颜色
-        // TODO：商品进价/商品售价
-        product_brand: "", // 商品库存
-        product_cost: "", // 商品库存
+        product_name: "", // Product Name
+        product_color: "", // Product Color
+        // TODO: Product Cost/Product Price
+        product_brand: "", // Product Brand
+        product_cost: "", // Product Price
         product_image1: "", // 主页图片
         product_image2: ""
         // TODO：细节图片

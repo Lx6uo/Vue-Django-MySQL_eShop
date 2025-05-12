@@ -17,7 +17,7 @@
           >
             <v-spacer></v-spacer>
             <v-toolbar-title>
-              <h4>用户操作日志{{num}}条</h4>
+              <h4>User Operation Logs ({{num}})</h4>
             </v-toolbar-title>
             <v-spacer></v-spacer>
           </v-toolbar>

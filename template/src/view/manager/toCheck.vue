@@ -8,7 +8,7 @@
 <v-list-item-content>
   <v-row>
     <v-col class="product">
-      <!--第一部分上面是商品图像+商品细节照片 下面是商品信息-->
+      <!--Product image and detail photo above, product information below-->
       <img class="picture1" :src="`http://127.0.0.1:8001/media/${item.fields.product_image}`" alt=""
            height="50px" width="50px">
       <img class="picture2" :src="`http://127.0.0.1:8001/media/${item.fields.product_imageDetail}`" alt=""
@@ -36,7 +36,7 @@
           <v-list-item-title>{{ business_list_dict[item.fields.product_business].fields.user_name }}</v-list-item-title>
         </v-col>
 
-        <!--地址-->
+        <!--Address-->
         <v-col>
           <!--<v-list-item-title>{{ item.address }}</v-list-item-title>-->
           <region-text
@@ -63,7 +63,7 @@
               <v-col>
           <v-btn
             color="success"
-            @click="changestatus(item.pk,'通过审核')"
+            @click="changestatus(item.pk,'Approved')"
           >
             {{btn_content}}
           </v-btn>
@@ -71,7 +71,7 @@
                <v-col>
           <v-btn
             color="success"
-            @click="changestatus(item.pk,'回退申请')"
+            @click="changestatus(item.pk,'Rejected')"
           >
             {{btn_content2}}
           </v-btn>
@@ -106,8 +106,8 @@ export default {
   },
 
   data: () => ({
-    btn_content: '通过审核',
-    btn_content2: '回退申请',
+    btn_content: 'Approve',
+    btn_content2: 'Reject',
 
     business_orders:[],
     orderProducts:[],
@@ -125,7 +125,7 @@ export default {
   methods:{
     async initBusinessInfo(){
       await this.axios.get('get_users/',
-          {params:{status:'待上架'}})
+          {params:{status:'Pending'}})
         .then((response) => {
             console.log(response);
             this.business_lists = response.data.business_lists;
@@ -152,7 +152,7 @@ export default {
 
 
       await this.axios.get('get_check/',
-          {params:{product_status:'申请上架',check_status:'待审核'}})
+          {params:{product_status:'Listing Request',check_status:'Pending Review'}})
         .then((response) => {
             console.log(response);
 
