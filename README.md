@@ -67,6 +67,18 @@ eShop/
 - 数据统计和可视化
 - 用户行为日志
 
+## 系统要求
+
+### 后端环境
+- Python 3.8+
+- MySQL 5.7+
+- pip (Python 包管理器)
+
+### 前端环境
+- Node.js 14+
+- npm 6+ 或 yarn 1.22+
+
+
 ## 技术栈
 
 ### 后端
@@ -81,21 +93,11 @@ eShop/
 - Vue Router
 - Axios
 
-## 安装与部署
-
-详细的安装和部署说明请参考 [部署文档](DEPLOYMENT.md)。
-
 ## 开发环境设置
 
 ### 后端设置
 
-1. 克隆仓库
-```bash
-git clone <repository-url>
-cd eShop
-```
-
-2. 创建并激活虚拟环境
+1. 创建并激活虚拟环境
 ```bash
 python -m venv venv
 # Windows
@@ -104,19 +106,42 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-3. 安装依赖
+2. 安装依赖
 ```bash
-pip install -r requirements.txt
+pip install install django mysqlclient django-cors-headers pillow django-imagekit
 ```
 
-4. 配置数据库
+3. 配置数据库
    - 在 `djangoProject/settings.py` 中配置数据库连接
    - 默认使用MySQL，数据库名为 `dbproject2`
+   - 在 MySQL 中创建数据库：
+   ```sql
+   CREATE DATABASE dbproject2 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   ```
+   - 修改 `djangoProject/settings.py` 中的数据库配置：
+   ```python
+   DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.mysql',
+           'NAME': 'dbproject2',  # 数据库名
+           'USER': 'root',        # 数据库用户名
+           'PASSWORD': 'root',    # 数据库密码
+           'HOST': '127.0.0.1',   # 数据库主机
+           'PORT': '3306',        # 数据库端口
+       }
+   }
+   ```
 
-5. 运行数据库迁移
+
+4. 运行数据库迁移
 ```bash
 python manage.py migrate
 ```
+4. 创建媒体文件目录
+```bash
+mkdir -p media/avatar
+mkdir -p media/user_avatar
+mkdir -p media/comments
 
 6. 启动开发服务器
 ```bash
@@ -144,15 +169,3 @@ npm run serve
 ```bash
 npm run build
 ```
-
-## 贡献指南
-
-1. Fork 项目
-2. 创建功能分支 (`git checkout -b feature/amazing-feature`)
-3. 提交更改 (`git commit -m 'Add some amazing feature'`)
-4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 创建 Pull Request
-
-## 许可证
-
-本项目采用 MIT 许可证 - 详情请参阅 LICENSE 文件
